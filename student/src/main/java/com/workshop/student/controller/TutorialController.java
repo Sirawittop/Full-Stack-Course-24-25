@@ -31,8 +31,8 @@ public class TutorialController {
     public String postTutorial(
         @RequestParam() Map<String, String> params) {
         System.out.println("----- postTutorial -----");
-        System.out.println("Params: " + params.get("id"));
-        System.out.println("Params: " + params.get("code"));
+        System.out.println("Params id : " + params.get("id"));
+        System.out.println("Params code : " + params.get("code"));
         return "index";
         }
 
