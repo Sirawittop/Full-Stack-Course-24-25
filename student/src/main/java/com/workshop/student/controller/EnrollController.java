@@ -43,7 +43,7 @@ public class EnrollController {
         System.out.println("Size: " + enrollList.size());
 
 
-        return "index";
+        return "enroll/index.html";
     }
 
     @GetMapping("/{enroll-id}")
@@ -58,7 +58,7 @@ public class EnrollController {
         System.out.println("Enroll First Name: " + enroll.getStudent().getStudentFirstName());
         System.out.println("Enroll Last Name: " + enroll.getStudent().getStudentLastName());
 
-        return "index";
+        return "enroll/index.html";
     }
     
     @GetMapping("/delete/{enroll-id}")
@@ -71,7 +71,7 @@ public class EnrollController {
         EnrollEntity enroll = enrollService.getEnrollById(enrollId);
         System.out.println("Enroll Name: " + enroll.getCourse().getCourseName());
 
-        return "index";
+        return "enroll/index.html";
     }
 
     @PostMapping("/")
@@ -103,7 +103,7 @@ public class EnrollController {
         System.out.println("Enroll ID: " + result.getEnrollId());
         System.out.println("Enroll Course: " + result.getCourse().getCourseName());
 
-        return "index";
+        return "enroll/index.html";
     }
     
     

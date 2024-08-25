@@ -36,7 +36,7 @@ public class StudentController {
         System.out.println("----- StudentController getAll Student -----");
         System.out.println("Size: " + studentList.size());
 
-        return "index";
+        return "student/index.html";
     }
 
     @GetMapping("/{student-id}")
@@ -50,7 +50,7 @@ public class StudentController {
         System.out.println("Student Name: " + student.getStudentFirstName() + " " + student.getStudentLastName());
 
 
-        return "index";
+        return "student/index.html";
     }
 
     @PostMapping("/")
@@ -82,8 +82,7 @@ public class StudentController {
         System.out.println("Student First Name: " + result.getStudentFirstName());
         System.out.println("Student Last Name: " + result.getStudentLastName());
         System.out.println("Student Faculty: " + result.getFaculty().getFacultyName());
-        
-        return "index";
+        return "student/index.html";
     }
     
 
@@ -95,7 +94,7 @@ public class StudentController {
 
         System.out.println("----- StudentController getDeleteById Student -----");
         studentService.deleteStudent(studentId);
-        return "index";
+        return "student/index.html";
     }
     
 }

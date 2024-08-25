@@ -16,7 +16,7 @@ public class TutorialController {
             @RequestParam(name = "id", required = false, defaultValue = "0") Integer id) {
         System.out.println("----- getTutorial -----");
         System.out.println("ID: " + id);
-        return "index";
+        return "template";
     }
 
     @GetMapping("/{id}")

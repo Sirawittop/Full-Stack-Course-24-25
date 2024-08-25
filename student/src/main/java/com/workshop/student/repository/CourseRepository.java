@@ -7,5 +7,5 @@ import com.workshop.student.entity.courseEntity;
 
 @Repository
 public interface CourseRepository extends JpaRepository<courseEntity, Integer> {
-    
+
 }

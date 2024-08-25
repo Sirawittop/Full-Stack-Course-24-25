@@ -31,7 +31,7 @@ public class CourseController {
         System.out.println("----- CourseController getAll Course -----");
         System.out.println("Size: " + courseList.size());
 
-        return "index";
+        return "course/index.html";
     }
 
     @GetMapping("/{course-id}")
@@ -44,7 +44,7 @@ public class CourseController {
         System.out.println("----- CourseController getById Course -----");
         System.out.println("Course Name: " + course.getCourseName());
 
-        return "index";
+        return "course/index.html";
     }
     
     @GetMapping("/delete/{course-id}")
@@ -56,7 +56,7 @@ public class CourseController {
         courseEntity course = courseService.getCourseById(courseId);
         System.out.println("----- CourseController getDeleteById Course -----");
         System.out.println("Course Name: " + course.getCourseName());
-        return "index";
+        return "course/index.html";
     }
 
     @PostMapping("/")
@@ -79,6 +79,6 @@ public class CourseController {
         System.out.println("Course ID: " + result.getCourseId());
         System.out.println("Course Name: " + result.getCourseName());
 
-        return "index";
+        return "course/index.html";
     }
 }
