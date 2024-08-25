@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,32 +17,33 @@ import com.workshop.student.entity.StudentEntity;
 import com.workshop.student.service.FacultyService;
 import com.workshop.student.service.StudentService;
 
-
-
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-    
+
     @Autowired
     private StudentService studentService;
 
     @Autowired
     private FacultyService facultyService;
-    
-    @GetMapping({"", "/"})
-    public String getAll() {
+
+    @GetMapping({ "", "/" })
+    public String getAll(ModelMap model) {
         System.out.println("----- StudentController getAll() -----");
 
         List<StudentEntity> studentList = studentService.getAllStudent();
         System.out.println("----- StudentController getAll Student -----");
         System.out.println("Size: " + studentList.size());
 
+        List<FacultyEntity> facultyList = facultyService.getAllFaculty();
+        model.addAttribute("facultyList", facultyList);
+
         return "student/index.html";
     }
 
     @GetMapping("/{student-id}")
     public String getById(
-        @PathVariable(name = "student-id", required = true) Integer studentId) {
+            @PathVariable(name = "student-id", required = true) Integer studentId) {
         System.out.println("----- StudentController getById() -----");
         System.out.println("Student ID: " + studentId);
 
@@ -49,13 +51,12 @@ public class StudentController {
         System.out.println("----- StudentController getById Student -----");
         System.out.println("Student Name: " + student.getStudentFirstName() + " " + student.getStudentLastName());
 
-
         return "student/index.html";
     }
 
     @PostMapping("/")
     public String postInsertAndUpdate(
-        @RequestParam() Map<String, String > params) {
+            @RequestParam() Map<String, String> params) {
         System.out.println("----- StudentController postInsertAndUpdate() -----");
         System.out.println("Params id : " + params.get("student-id"));
         System.out.println("Params code : " + params.get("student-code"));
@@ -84,11 +85,10 @@ public class StudentController {
         System.out.println("Student Faculty: " + result.getFaculty().getFacultyName());
         return "student/index.html";
     }
-    
 
     @GetMapping("/delete/{student-id}")
     public String getDeleteById(
-        @PathVariable(name = "student-id", required = true) Integer studentId) {
+            @PathVariable(name = "student-id", required = true) Integer studentId) {
         System.out.println("----- StudentController getDeleteById() -----");
         System.out.println("Student ID: " + studentId);
 
@@ -96,5 +96,5 @@ public class StudentController {
         studentService.deleteStudent(studentId);
         return "student/index.html";
     }
-    
+
 }

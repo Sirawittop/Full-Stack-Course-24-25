@@ -8,7 +8,7 @@
 
 <body>
     <th:block th:replace="~{template::menu}"></th:block>
-    <div style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: center; margin-top: 50px;">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px;">
             <div class="w-72">
                 <div class="relative w-full min-w-[200px] h-10">
@@ -58,7 +58,20 @@
     </div>
 
     <!-- dropdown -->
-    
+    <form class="max-w-sm mx-auto" style="margin-bottom: 20px;">
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+            option</label>
+        <select id="countries"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="" disabled selected>Faculty</option>
+            <option th:each="faculty : ${facultyList}">
+                <span th:text="${faculty.facultyName}"></span>
+            </option>
+        </select>
+    </form>
+
+
+
 
     <div style="display: flex; justify-content: center;">
         <button
